@@ -86,7 +86,7 @@ p {
     to { transform: translateY(-100vh) rotate(360deg); }
 }
 
-/* Create particles */
+
 .particles span {
     position: absolute;
     pointer-events: none;

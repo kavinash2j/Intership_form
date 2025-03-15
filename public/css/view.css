@@ -1,0 +1,43 @@
+
+    /* Additional CSS for applications page */
+    .applications-container {
+      padding: 2rem;
+      overflow-x: auto;
+    }
+
+    .applications-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .applications-table th,
+    .applications-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .applications-table th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .applications-table tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .resume-link {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 10px 20px;
+      background-color: #6c757d;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }

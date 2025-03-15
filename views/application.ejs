@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Apllications</title>
+    <link rel="stylesheet" href="/css/view.css">
+</head>
+<body>
+    <div class="applications-container">
+        <a href="/" class="back-button">← Back to Home</a>
+        <h2>All Applications</h2>
+        <table class="applications-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Date of Birth</th>
+                    <th>Education</th>
+                    <th>Skills</th>
+                    <th>Resume</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i of temp){ %>
+                <tr>
+                  <td><%= i.name %></td>
+                  <td><%= i.email %></td>
+                  <td><%= i.mobNum %></td>
+                  <td><%= i.date %></td>
+                  <td><%= i.education %></td>
+                  <td><%= i.skills %></td>
+                  <td><a href="#" class="resume-link">Download</a></td>
+                  <td><%= i.message %></td>
+                </tr>
+                <% } %>
+              </tbody>
+            <tbody>
+        </table>
+    </div>
+</body>
+
+</html>

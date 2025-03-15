@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 let formschema = mongoose.Schema({
     name : String,
-    email_id : String,
+    email : String,
     mobNum : Number,
     date : String,
     education:String,

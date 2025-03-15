@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const user_form = require("./schema_modules/form.js");
 const ejs_mate = require("ejs-mate");
+const expressError = require("./util/expressError.js");
+const wrapAsync = require("./util/wrapAsync.js");
 
 async function main() {
     await mongoose.connect("mongodb+srv://kshirsagaravi2151:22310161@cluster0.s7mxc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
@@ -29,17 +31,35 @@ app.post("/fill_form/submit",async(req,res)=>{
     // console.log(hello);
     let user = new user_form(userbody);
     user.save().then(()=>{
-        res.send("")
+        res.render("thank.ejs")
     });
-
 })
 app.use("/fill_form",(req,res)=>{
-    res.render("form.ejs")
+    try {
+        res.render("form.ejs")
+    } catch (error) {
+        throw new expressError(error);
+    }
+    
 })
 app.get("/",(req,res)=>{
-    res.render("index.ejs");
+    try {
+        res.render("index.ejs");
+    } catch (error) {
+        throw new expressError(error);
+    }
 })
 
+app.get("/view/application",async(req,res)=>{
+    let temp = await user_form.find();
+    res.render("application.ejs",{temp});
+})
+
+app.use((err,req,res,next)=>{
+    let {status = 500,message="something went wrong"} = err;
+    console.log(message);
+    res.status(status).send(message);
+})
 app.listen(8080,()=>{
     console.log("app is listing on the port 8080");
 })
