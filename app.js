@@ -6,6 +6,7 @@ const user_form = require("./schema_modules/form.js");
 const ejs_mate = require("ejs-mate");
 const expressError = require("./util/expressError.js");
 const wrapAsync = require("./util/wrapAsync.js");
+const method_overriden = require("method-override");
 
 
 async function main() {
@@ -21,10 +22,12 @@ main().then(()=>{
 
 app.set("view engine","ejs")
 app.set("views",path.join(__dirname,"views"))
+app.use(method_overriden("_method"))
 app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.engine("ejs", ejs_mate);
+
 
 
 app.post("/fill_form/submit",async(req,res)=>{
@@ -35,13 +38,12 @@ app.post("/fill_form/submit",async(req,res)=>{
         res.render("thank.ejs")
     });
 })
-app.use("/fill_form",(req,res)=>{
+app.get("/fill_form",(req,res)=>{
     try {
         res.render("form.ejs")
     } catch (error) {
         throw new expressError(error);
     }
-    
 })
 app.get("/",(req,res)=>{
     try {
@@ -54,6 +56,12 @@ app.get("/",(req,res)=>{
 app.get("/view/application",async(req,res)=>{
     let temp = await user_form.find();
     res.render("application.ejs",{temp});
+})
+app.delete("/delete_form/:id",async(req,res)=>{
+    let {id} = req.params;
+    let de_user = await user_form.findByIdAndDelete(id);
+    console.log(de_user);
+    res.redirect("/view/application")
 })
 
 app.use((err,req,res,next)=>{
