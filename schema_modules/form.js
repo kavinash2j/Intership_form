@@ -7,7 +7,7 @@ let formschema = mongoose.Schema({
     date : String,
     education:String,
     skills:String,
-    resume : String,
+    resume : mongoose.Schema.Types.ObjectId,
     message : String,
 })
 
