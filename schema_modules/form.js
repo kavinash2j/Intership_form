@@ -5,6 +5,9 @@ let formschema = mongoose.Schema({
     email_id : String,
     mobNum : Number,
     date : String,
+    education:String,
+    skills:String,
+    resume : String,
     message : String,
 })
 
