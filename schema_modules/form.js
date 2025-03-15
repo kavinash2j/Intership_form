@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 let formschema = mongoose.Schema({
     name : String,
     email_id : String,
-    MobileNumber : Number,
+    mobNum : Number,
     date : String,
     message : String,
 })
 
-let form = mongoose.Model("form",formschema);
+let form = mongoose.model("form",formschema);
 
-module.exports = form;
+module.exports = form

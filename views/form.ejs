@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internship Application Form</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <form id="internship-form" action="/submit" method="POST">
+    <h1>Internship Application Form</h1>
+
+    <div class="form-group">
+      <label for="full-name">Full Name</label>
+      <input
+        type="text"
+        id="full-name"
+        name="fullName"
+        placeholder="Enter your full name"
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="mobile">Mobile Number</label>
+      <input
+        type="tel"
+        id="mobile"
+        name="mobile"
+        placeholder="Enter your mobile number"
+        pattern="[0-9]{10}"
+        required
+      >
+    </div>
+
+    
+    <div class="form-group">
+      <label for="dob">Date of Birth</label>
+      <input
+        type="date"
+        id="dob"
+        name="dob"
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="education">Education Details</label>
+      <textarea
+        id="education"
+        name="education"
+        placeholder="Enter your education details (e.g., degree, institution)"
+        rows="4"
+        required
+      ></textarea>
+    </div>
+
+
+    <div class="form-group">
+      <label for="skills">Skills</label>
+      <textarea
+        id="skills"
+        name="skills"
+        placeholder="Enter your skills (e.g., programming languages, tools)"
+        rows="4"
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="resume">Upload Resume</label>
+      <input
+        type="file"
+        id="resume"
+        name="resume"
+        accept=".pdf,.doc,.docx"
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="message">Cover Letter/Message</label>
+      <textarea
+        id="message"
+        name="message"
+        placeholder="Why do you want this internship?"
+        rows="6"
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit">Apply Now</button>
+  </form>
+</body>
+</html>
