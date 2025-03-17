@@ -30,14 +30,14 @@ app.engine("ejs", ejs_mate);
 
 
 
-app.post("/fill_form/submit",async(req,res)=>{
+app.post("/fill_form/submit",wrapAsync(async(req,res)=>{
     let userbody = req.body;
     // console.log(hello);
     let user = new user_form(userbody);
     user.save().then(()=>{
         res.render("thank.ejs")
     });
-})
+}))
 app.get("/fill_form",(req,res)=>{
     try {
         res.render("form.ejs")
@@ -53,16 +53,16 @@ app.get("/",(req,res)=>{
     }
 })
 
-app.get("/view/application",async(req,res)=>{
+app.get("/view/application",wrapAsync(async(req,res)=>{
     let temp = await user_form.find();
     res.render("application.ejs",{temp});
-})
-app.delete("/delete_form/:id",async(req,res)=>{
+}))
+app.delete("/delete_form/:id",wrapAsync(async(req,res)=>{
     let {id} = req.params;
     let de_user = await user_form.findByIdAndDelete(id);
     console.log(de_user);
     res.redirect("/view/application")
-})
+}))
 
 app.use((err,req,res,next)=>{
     let {status = 500,message="something went wrong"} = err;
